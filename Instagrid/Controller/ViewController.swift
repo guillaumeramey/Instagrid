@@ -8,18 +8,76 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var buttonLayout1: UIButton!
-    @IBOutlet weak var buttonLayout2: UIButton!
-    @IBOutlet weak var buttonLayout3: UIButton!
     @IBOutlet weak var gridRow1: UIStackView!
     @IBOutlet weak var gridRow2: UIStackView!
     @IBOutlet weak var gridRow3: UIStackView!
     
+    var imagePicker = UIImagePickerController()
+    var imagePicked = 0
+    
+    @IBOutlet weak var buttonImage1: UIButton!
+    @IBAction func tapButtonImage1(_ sender: UIButton) {
+        imagePicked = sender.tag
+        self.present(imagePicker, animated: true)
+    }
+    
+    @IBOutlet weak var buttonImage2: UIButton!
+    @IBAction func tapButtonImage2(_ sender: UIButton) {
+        imagePicked = sender.tag
+        self.present(imagePicker, animated: true)
+    }
+    
+    @IBOutlet weak var buttonImage3: UIButton!
+    @IBAction func tapButtonImage3(_ sender: UIButton) {
+        imagePicked = sender.tag
+        self.present(imagePicker, animated: true)
+    }
+    
+    @IBOutlet weak var buttonImage4: UIButton!
+    @IBAction func tapButtonImage4(_ sender: UIButton) {
+        imagePicked = sender.tag
+        self.present(imagePicker, animated: true)
+    }
+    
+    @IBOutlet weak var buttonImage5: UIButton!
+    @IBAction func tapButtonImage5(_ sender: UIButton) {
+        imagePicked = sender.tag
+        self.present(imagePicker, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         layout = .layout2
+        imagePicker.delegate = self
+        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.allowsEditing = false
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        
+        switch imagePicked {
+        case 1:
+            buttonImage1.setImage(pickedImage, for: .normal)
+        case 2:
+            buttonImage2.setImage(pickedImage, for: .normal)
+        case 3:
+            buttonImage3.setImage(pickedImage, for: .normal)
+        case 4:
+            buttonImage4.setImage(pickedImage, for: .normal)
+        case 5:
+            buttonImage5.setImage(pickedImage, for: .normal)
+        default:
+            break
+        }
+        
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
     }
     
     enum Layout {
@@ -32,15 +90,18 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func buttonLayout1(_ sender: Any) {
+    @IBOutlet weak var buttonLayout1: UIButton!
+    @IBAction func tapButtonLayout1(_ sender: Any) {
         layout = .layout1
     }
     
-    @IBAction func buttonLayout2(_ sender: Any) {
+    @IBOutlet weak var buttonLayout2: UIButton!
+    @IBAction func tapButtonLayout2(_ sender: Any) {
         layout = .layout2
     }
     
-    @IBAction func buttonLayout3(_ sender: Any) {
+    @IBOutlet weak var buttonLayout3: UIButton!
+    @IBAction func tapButtonLayout3(_ sender: Any) {
         layout = .layout3
     }
     
@@ -49,7 +110,7 @@ class ViewController: UIViewController {
         case .layout1:
             buttonLayout1.setImage(UIImage(named: "Button Selected.png"), for: .normal)
             buttonLayout2.setImage(UIImage(named: ""), for: .normal)
-            buttonLayout3.setImage(UIImage(named: "B"), for: .normal)
+            buttonLayout3.setImage(UIImage(named: ""), for: .normal)
             gridRow1.isHidden = true
             gridRow2.isHidden = false
             gridRow3.isHidden = false
@@ -69,6 +130,5 @@ class ViewController: UIViewController {
             gridRow3.isHidden = false
         }
     }
- 
 }
 
