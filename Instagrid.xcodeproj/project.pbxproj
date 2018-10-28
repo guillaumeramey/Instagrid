@@ -12,6 +12,11 @@
 		A4B2C10D2185D6B3000140C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4B2C10B2185D6B3000140C7 /* Main.storyboard */; };
 		A4B2C10F2185D6B5000140C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4B2C10E2185D6B5000140C7 /* Assets.xcassets */; };
 		A4B2C1122185D6B5000140C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4B2C1102185D6B5000140C7 /* LaunchScreen.storyboard */; };
+		A4B2C1242186167F000140C7 /* Add Image.png in Resources */ = {isa = PBXBuildFile; fileRef = A4B2C1232186167F000140C7 /* Add Image.png */; };
+		A4B2C12A218641BF000140C7 /* Button Layout 2.png in Resources */ = {isa = PBXBuildFile; fileRef = A4B2C127218641BF000140C7 /* Button Layout 2.png */; };
+		A4B2C12B218641BF000140C7 /* Button Layout 3.png in Resources */ = {isa = PBXBuildFile; fileRef = A4B2C128218641BF000140C7 /* Button Layout 3.png */; };
+		A4B2C12C218641BF000140C7 /* Button Layout 1.png in Resources */ = {isa = PBXBuildFile; fileRef = A4B2C129218641BF000140C7 /* Button Layout 1.png */; };
+		A4B2C12E218642AB000140C7 /* Button Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = A4B2C12D218642AB000140C7 /* Button Selected.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		A4B2C10E2185D6B5000140C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4B2C1112185D6B5000140C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4B2C1132185D6B5000140C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4B2C1232186167F000140C7 /* Add Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add Image.png"; sourceTree = "<group>"; };
+		A4B2C127218641BF000140C7 /* Button Layout 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button Layout 2.png"; sourceTree = "<group>"; };
+		A4B2C128218641BF000140C7 /* Button Layout 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button Layout 3.png"; sourceTree = "<group>"; };
+		A4B2C129218641BF000140C7 /* Button Layout 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button Layout 1.png"; sourceTree = "<group>"; };
+		A4B2C12D218642AB000140C7 /* Button Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button Selected.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +98,11 @@
 		A4B2C11C2185DCCF000140C7 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				A4B2C129218641BF000140C7 /* Button Layout 1.png */,
+				A4B2C127218641BF000140C7 /* Button Layout 2.png */,
+				A4B2C128218641BF000140C7 /* Button Layout 3.png */,
+				A4B2C12D218642AB000140C7 /* Button Selected.png */,
+				A4B2C1232186167F000140C7 /* Add Image.png */,
 				A4B2C1072185D6B3000140C7 /* AppDelegate.swift */,
 				A4B2C10E2185D6B5000140C7 /* Assets.xcassets */,
 				A4B2C1102185D6B5000140C7 /* LaunchScreen.storyboard */,
@@ -154,8 +169,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4B2C12B218641BF000140C7 /* Button Layout 3.png in Resources */,
+				A4B2C12C218641BF000140C7 /* Button Layout 1.png in Resources */,
 				A4B2C1122185D6B5000140C7 /* LaunchScreen.storyboard in Resources */,
+				A4B2C12E218642AB000140C7 /* Button Selected.png in Resources */,
+				A4B2C1242186167F000140C7 /* Add Image.png in Resources */,
 				A4B2C10F2185D6B5000140C7 /* Assets.xcassets in Resources */,
+				A4B2C12A218641BF000140C7 /* Button Layout 2.png in Resources */,
 				A4B2C10D2185D6B3000140C7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

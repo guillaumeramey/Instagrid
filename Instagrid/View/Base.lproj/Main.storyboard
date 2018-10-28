@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,15 +14,131 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Instagrid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0r-CP-TtH" userLabel="Button layout 1">
+                                <rect key="frame" x="30" y="601" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="Button Layout 1.png"/>
+                                <connections>
+                                    <action selector="buttonLayout1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cfs-RF-5I0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnF-FD-qyq" userLabel="Button layout 2">
+                                <rect key="frame" x="168" y="601" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="Button Selected.png" backgroundImage="Button Layout 2.png"/>
+                                <connections>
+                                    <action selector="buttonLayout2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XOR-wQ-PPQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZC-3u-Aap" userLabel="Button layout 3">
+                                <rect key="frame" x="304" y="601" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="Button Layout 3.png"/>
+                                <connections>
+                                    <action selector="buttonLayout1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zax-ID-PdZ"/>
+                                    <action selector="buttonLayout3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QTF-Hz-bW9"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3g4-cp-Xcu">
+                                <rect key="frame" x="30" y="50" width="354" height="354"/>
+                                <subviews>
+                                    <stackView contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="pGl-kB-oLM">
+                                        <rect key="frame" x="15" y="15" width="324" height="324"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="EpA-Gf-B2O" userLabel="Grid row 1">
+                                                <rect key="frame" x="0.0" y="0.0" width="324" height="98"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Image.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jdw-Fp-XMS" userLabel="Image View 1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="154.66666666666666" height="98"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Jdw-Fp-XMS" secondAttribute="height" multiplier="1:1" id="dzA-Sn-EMo"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Image.png" translatesAutoresizingMaskIntoConstraints="NO" id="Apu-YN-Rdh" userLabel="Image View 2">
+                                                        <rect key="frame" x="169.66666666666663" y="0.0" width="154.33333333333337" height="98"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Apu-YN-Rdh" secondAttribute="height" multiplier="1:1" id="fyi-KT-0P6"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7h9-AK-MtG" userLabel="Grid row 2">
+                                                <rect key="frame" x="0.0" y="113" width="324" height="98"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Image.png" translatesAutoresizingMaskIntoConstraints="NO" id="3Tw-gj-Md3" userLabel="Image View 3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="324" height="98"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="UvV-Om-tNc" userLabel="Grid row 3">
+                                                <rect key="frame" x="0.0" y="226" width="324" height="98"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Image.png" translatesAutoresizingMaskIntoConstraints="NO" id="PgY-E6-eEl" userLabel="Image View 4">
+                                                        <rect key="frame" x="0.0" y="0.0" width="154.66666666666666" height="98"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="PgY-E6-eEl" secondAttribute="height" multiplier="1:1" id="HxH-ZV-eYy"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Image.png" translatesAutoresizingMaskIntoConstraints="NO" id="e9c-K4-B6A" userLabel="Image View 5">
+                                                        <rect key="frame" x="169.66666666666663" y="0.0" width="154.33333333333337" height="98"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="e9c-K4-B6A" secondAttribute="height" multiplier="1:1" id="TPY-Qe-hwe"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.062745098040000002" green="0.40000000000000002" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.062745098040000002" green="0.40000000000000002" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="pGl-kB-oLM" firstAttribute="top" secondItem="3g4-cp-Xcu" secondAttribute="top" constant="15" id="68A-bV-Xjz"/>
+                                    <constraint firstAttribute="bottom" secondItem="pGl-kB-oLM" secondAttribute="bottom" constant="15" id="Hjb-Uq-FvI"/>
+                                    <constraint firstAttribute="trailing" secondItem="pGl-kB-oLM" secondAttribute="trailing" constant="15" id="RUO-B1-tEu"/>
+                                    <constraint firstItem="pGl-kB-oLM" firstAttribute="leading" secondItem="3g4-cp-Xcu" secondAttribute="leading" constant="15" id="eHm-rM-RzA"/>
+                                    <constraint firstAttribute="width" secondItem="3g4-cp-Xcu" secondAttribute="height" multiplier="1:1" id="yxJ-mI-XEo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.71764705882352942" green="0.84313725490196079" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3g4-cp-Xcu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="blh-1r-YeJ"/>
+                            <constraint firstItem="3g4-cp-Xcu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="icQ-PZ-2mv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3g4-cp-Xcu" secondAttribute="trailing" constant="30" id="ttT-LY-Z2R"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="buttonLayout1" destination="V0r-CP-TtH" id="Uzi-Xj-mmG"/>
+                        <outlet property="buttonLayout2" destination="TnF-FD-qyq" id="vLK-qL-C8m"/>
+                        <outlet property="buttonLayout3" destination="dZC-3u-Aap" id="6Da-4t-Ung"/>
+                        <outlet property="gridRow1" destination="EpA-Gf-B2O" id="KsR-qu-0Df"/>
+                        <outlet property="gridRow2" destination="7h9-AK-MtG" id="3DG-Vj-Cqh"/>
+                        <outlet property="gridRow3" destination="UvV-Om-tNc" id="C43-1T-Y3k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="136.23188405797103" y="132.88043478260872"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Add Image.png" width="48" height="49"/>
+        <image name="Button Layout 1.png" width="80" height="80"/>
+        <image name="Button Layout 2.png" width="80" height="80"/>
+        <image name="Button Layout 3.png" width="80" height="80"/>
+        <image name="Button Selected.png" width="80" height="80"/>
+    </resources>
 </document>
