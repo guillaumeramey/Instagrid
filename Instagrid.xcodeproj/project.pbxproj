@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A41CCD9C218882D000367E85 /* Launch Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A41CCD9B218882D000367E85 /* Launch Icon.png */; };
 		A41CCDA42188888900367E85 /* Swipe Up.png in Resources */ = {isa = PBXBuildFile; fileRef = A41CCDA32188888900367E85 /* Swipe Up.png */; };
+		A48D479A2188F3B2003382DF /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41CCD9E2188853300367E85 /* Delm-Medium.otf */; };
+		A48D479B2188F3B5003382DF /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41CCD9D2188853300367E85 /* ThirstySoftRegular.otf */; };
 		A4B2C1082185D6B3000140C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2C1072185D6B3000140C7 /* AppDelegate.swift */; };
 		A4B2C10A2185D6B3000140C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2C1092185D6B3000140C7 /* ViewController.swift */; };
 		A4B2C10D2185D6B3000140C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4B2C10B2185D6B3000140C7 /* Main.storyboard */; };
@@ -185,9 +187,11 @@
 				A41CCD9C218882D000367E85 /* Launch Icon.png in Resources */,
 				A4B2C12E218642AB000140C7 /* Button Selected.png in Resources */,
 				A4B2C1242186167F000140C7 /* Add Image.png in Resources */,
+				A48D479B2188F3B5003382DF /* ThirstySoftRegular.otf in Resources */,
 				A41CCDA42188888900367E85 /* Swipe Up.png in Resources */,
 				A4B2C10F2185D6B5000140C7 /* Assets.xcassets in Resources */,
 				A4B2C12A218641BF000140C7 /* Button Layout 2.png in Resources */,
+				A48D479A2188F3B2003382DF /* Delm-Medium.otf in Resources */,
 				A4B2C10D2185D6B3000140C7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

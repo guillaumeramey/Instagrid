@@ -34,19 +34,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     // Image buttons selection
-    @IBAction func tapButtonImage1(_ sender: UIButton) {
+    @IBAction func tapButtonImage1(_ sender: Any) {
         buttonSender = buttonImage1
         self.present(imagePicker, animated: true)
     }
-    @IBAction func tapButtonImage2(_ sender: UIButton) {
+    @IBAction func tapButtonImage2(_ sender: Any) {
         buttonSender = buttonImage2
         self.present(imagePicker, animated: true)
     }
-    @IBAction func tapButtonImage3(_ sender: UIButton) {
+    @IBAction func tapButtonImage3(_ sender: Any) {
         buttonSender = buttonImage3
         self.present(imagePicker, animated: true)
     }
-    @IBAction func tapButtonImage4(_ sender: UIButton) {
+    @IBAction func tapButtonImage4(_ sender: Any) {
         buttonSender = buttonImage4
         self.present(imagePicker, animated: true)
     }
@@ -57,7 +57,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.delegate = self
         imagePicker.sourceType = .savedPhotosAlbum
         imagePicker.allowsEditing = false
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragGridView(_:)))
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(swipeGridView(_:)))
         gridView.addGestureRecognizer(panGestureRecognizer)
     }
     
@@ -116,22 +116,56 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }, completion: nil)
     }
     
-    @objc func dragGridView(_ sender: UIPanGestureRecognizer){
+    @objc func swipeGridView(_ sender: UIPanGestureRecognizer){
+        let translation = sender.translation(in: gridView)
         switch sender.state {
-        case .began, .changed : // suis le geste
-            transformGridView(gesture: sender)
-            /*
-        case .ended, .cancelled : // répond à la question
-            answerQuestion()
- */
+        case .began, .changed :
+            if translation.y > 0 { return }
+            gridView.transform = CGAffineTransform(translationX: 0, y: translation.y)
+        case .ended, .cancelled :
+            var translationTransform: CGAffineTransform!
+            if translation.y < -UIScreen.main.bounds.height / 4 {
+                translationTransform = CGAffineTransform(translationX: 0, y: -UIScreen.main.bounds.height)
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.gridView.transform = translationTransform
+                }) { (success) in
+                    if success {
+                        self.shareImage(self.gridView)
+                    }
+                }
+            }
+            else {
+                resetGridViewPosition()
+            }
         default:
             break
         }
     }
     
-    private func transformGridView(gesture: UIPanGestureRecognizer){
-        let translation = gesture.translation(in: gridView)
-        gridView.transform = CGAffineTransform(translationX: 0, y: translation.y)
+    // puts the gridView to the center
+    func resetGridViewPosition() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.gridView.transform = CGAffineTransform(translationX: 0, y: 0)
+        })
+    }
+    
+    // shares an image
+    func shareImage(_ view: UIView) {
+        let image =  UIImage.init(view)
+        let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        present(activityViewController, animated: true, completion: resetGridViewPosition)
+    }
+}
+
+// converts a view into an image
+extension UIImage{
+    convenience init(_ view: UIView) {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
+        view.drawHierarchy(in: view.bounds, afterScreenUpdates: false)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.init(cgImage: (image?.cgImage)!)
+        
     }
 }
 
