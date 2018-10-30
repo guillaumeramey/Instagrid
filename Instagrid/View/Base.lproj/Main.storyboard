@@ -75,7 +75,7 @@
                                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7h9-AK-MtG" userLabel="Grid row 2">
                                                 <rect key="frame" x="0.0" y="113" width="324" height="98"/>
                                                 <subviews>
-                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LU3-ku-y8A" userLabel="Button Image 3">
+                                                    <button opaque="NO" tag="3" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LU3-ku-y8A" userLabel="Button Image 3">
                                                         <rect key="frame" x="0.0" y="0.0" width="324" height="98"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Add Image.png"/>
