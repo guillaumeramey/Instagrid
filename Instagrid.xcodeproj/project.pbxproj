@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A41CCD9C218882D000367E85 /* Launch Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A41CCD9B218882D000367E85 /* Launch Icon.png */; };
+		A41CCDA42188888900367E85 /* Swipe Up.png in Resources */ = {isa = PBXBuildFile; fileRef = A41CCDA32188888900367E85 /* Swipe Up.png */; };
 		A4B2C1082185D6B3000140C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2C1072185D6B3000140C7 /* AppDelegate.swift */; };
 		A4B2C10A2185D6B3000140C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2C1092185D6B3000140C7 /* ViewController.swift */; };
 		A4B2C10D2185D6B3000140C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4B2C10B2185D6B3000140C7 /* Main.storyboard */; };
@@ -20,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A41CCD9B218882D000367E85 /* Launch Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launch Icon.png"; sourceTree = "<group>"; };
+		A41CCD9D2188853300367E85 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
+		A41CCD9E2188853300367E85 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
+		A41CCDA32188888900367E85 /* Swipe Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Swipe Up.png"; sourceTree = "<group>"; };
 		A4B2C1042185D6B2000140C7 /* Instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4B2C1072185D6B3000140C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4B2C1092185D6B3000140C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +104,10 @@
 		A4B2C11C2185DCCF000140C7 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				A41CCDA32188888900367E85 /* Swipe Up.png */,
+				A41CCD9E2188853300367E85 /* Delm-Medium.otf */,
+				A41CCD9D2188853300367E85 /* ThirstySoftRegular.otf */,
+				A41CCD9B218882D000367E85 /* Launch Icon.png */,
 				A4B2C129218641BF000140C7 /* Button Layout 1.png */,
 				A4B2C127218641BF000140C7 /* Button Layout 2.png */,
 				A4B2C128218641BF000140C7 /* Button Layout 3.png */,
@@ -172,8 +182,10 @@
 				A4B2C12B218641BF000140C7 /* Button Layout 3.png in Resources */,
 				A4B2C12C218641BF000140C7 /* Button Layout 1.png in Resources */,
 				A4B2C1122185D6B5000140C7 /* LaunchScreen.storyboard in Resources */,
+				A41CCD9C218882D000367E85 /* Launch Icon.png in Resources */,
 				A4B2C12E218642AB000140C7 /* Button Selected.png in Resources */,
 				A4B2C1242186167F000140C7 /* Add Image.png in Resources */,
+				A41CCDA42188888900367E85 /* Swipe Up.png in Resources */,
 				A4B2C10F2185D6B5000140C7 /* Assets.xcassets in Resources */,
 				A4B2C12A218641BF000140C7 /* Button Layout 2.png in Resources */,
 				A4B2C10D2185D6B3000140C7 /* Main.storyboard in Resources */,
