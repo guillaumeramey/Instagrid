@@ -18,7 +18,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var buttonImage2: UIButton!
     @IBOutlet weak var buttonImage3: UIButton!
     @IBOutlet weak var buttonImage4: UIButton!
-
+    @IBOutlet weak var buttonColor1: UIButton!
+    @IBOutlet weak var buttonColor2: UIButton!
+    @IBOutlet weak var buttonColor3: UIButton!
+    @IBOutlet weak var buttonColor4: UIButton!
+    @IBOutlet weak var buttonColor5: UIButton!
+    @IBOutlet weak var buttonColor6: UIButton!
+    @IBOutlet weak var buttonColor7: UIButton!
+    @IBOutlet weak var buttonColor8: UIButton!
+    
     var imagePicker = UIImagePickerController()
     var buttonSender: UIButton!
     
@@ -51,8 +59,44 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.present(imagePicker, animated: true)
     }
     
+    // changes the background color
+    @IBAction func tapbuttonColor1(_ sender: Any) {
+        gridView.backgroundColor = buttonColor1.backgroundColor
+    }
+    @IBAction func tapbuttonColor2(_ sender: Any) {
+        gridView.backgroundColor = buttonColor2.backgroundColor
+    }
+    @IBAction func tapbuttonColor3(_ sender: Any) {
+        gridView.backgroundColor = buttonColor3.backgroundColor
+    }
+    @IBAction func tapbuttonColor4(_ sender: Any) {
+        gridView.backgroundColor = buttonColor4.backgroundColor
+    }
+    @IBAction func tapbuttonColor5(_ sender: Any) {
+        gridView.backgroundColor = buttonColor5.backgroundColor
+    }
+    @IBAction func tapbuttonColor6(_ sender: Any) {
+        gridView.backgroundColor = buttonColor6.backgroundColor
+    }
+    @IBAction func tapbuttonColor7(_ sender: Any) {
+        gridView.backgroundColor = buttonColor7.backgroundColor
+    }
+    @IBAction func tapbuttonColor8(_ sender: Any) {
+        gridView.backgroundColor = buttonColor8.backgroundColor
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        applyRoundCorners(buttonColor1)
+        applyRoundCorners(buttonColor2)
+        applyRoundCorners(buttonColor2)
+        applyRoundCorners(buttonColor3)
+        applyRoundCorners(buttonColor4)
+        applyRoundCorners(buttonColor5)
+        applyRoundCorners(buttonColor6)
+        applyRoundCorners(buttonColor7)
+        applyRoundCorners(buttonColor8)
         setLayout(2)
         imagePicker.delegate = self
         imagePicker.sourceType = .savedPhotosAlbum
@@ -154,6 +198,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let image =  UIImage.init(view)
         let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         present(activityViewController, animated: true, completion: resetGridViewPosition)
+    }
+    
+    // makes the buttons round
+    func applyRoundCorners(_ object: AnyObject) {
+        object.layer.cornerRadius = object.frame.size.width / 2
+        object.layer.masksToBounds = true
     }
 }
 
