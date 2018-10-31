@@ -140,9 +140,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // selects the current layout button
     func selectButtonLayout(_ buttonLayout: UIButton) {
-        buttonLayout1.setImage(UIImage(named: ""), for: .normal)
-        buttonLayout2.setImage(UIImage(named: ""), for: .normal)
-        buttonLayout3.setImage(UIImage(named: ""), for: .normal)
+        buttonLayout1.setImage(nil, for: .normal)
+        buttonLayout2.setImage(nil, for: .normal)
+        buttonLayout3.setImage(nil, for: .normal)
         buttonLayout.setImage(UIImage(named: "Button Selected.png"), for: .normal)
     }
 
@@ -160,18 +160,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }, completion: nil)
     }
     
+    // swipe gesture
     @objc func swipeGridView(_ sender: UIPanGestureRecognizer){
         let translation = sender.translation(in: gridView)
         switch sender.state {
         case .began, .changed :
-            if translation.y > 0 { return }
-            gridView.transform = CGAffineTransform(translationX: 0, y: translation.y)
+            if UIApplication.shared.statusBarOrientation == .portrait {
+                if translation.y > 0 { return } // no swiping down
+                gridView.transform = CGAffineTransform(translationX: 0, y: translation.y)
+            }
+            else {
+                if translation.x > 0 { return } // no swiping right
+                gridView.transform = CGAffineTransform(translationX: translation.x, y: 0)
+            }
         case .ended, .cancelled :
-            var translationTransform: CGAffineTransform!
             if translation.y < -UIScreen.main.bounds.height / 4 {
-                translationTransform = CGAffineTransform(translationX: 0, y: -UIScreen.main.bounds.height)
                 UIView.animate(withDuration: 0.3, animations: {
-                    self.gridView.transform = translationTransform
+                    self.gridView.transform = CGAffineTransform(translationX: 0, y: -UIScreen.main.bounds.height)
+                }) { (success) in
+                    if success {
+                        self.shareImage(self.gridView)
+                    }
+                }
+            }
+            else if translation.x < -UIScreen.main.bounds.width / 4 {
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.gridView.transform = CGAffineTransform(translationX: -UIScreen.main.bounds.width, y: 0)
                 }) { (success) in
                     if success {
                         self.shareImage(self.gridView)
