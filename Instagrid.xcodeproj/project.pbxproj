@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A41CCD9C218882D000367E85 /* Launch Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A41CCD9B218882D000367E85 /* Launch Icon.png */; };
 		A41CCDA42188888900367E85 /* Swipe Up.png in Resources */ = {isa = PBXBuildFile; fileRef = A41CCDA32188888900367E85 /* Swipe Up.png */; };
+		A452C5CF21899B1600F76262 /* Swipe Left.png in Resources */ = {isa = PBXBuildFile; fileRef = A452C5CE21899B1600F76262 /* Swipe Left.png */; };
 		A48D479A2188F3B2003382DF /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41CCD9E2188853300367E85 /* Delm-Medium.otf */; };
 		A48D479B2188F3B5003382DF /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41CCD9D2188853300367E85 /* ThirstySoftRegular.otf */; };
 		A4B2C1082185D6B3000140C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2C1072185D6B3000140C7 /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 		A41CCD9D2188853300367E85 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		A41CCD9E2188853300367E85 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		A41CCDA32188888900367E85 /* Swipe Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Swipe Up.png"; sourceTree = "<group>"; };
+		A452C5CE21899B1600F76262 /* Swipe Left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Swipe Left.png"; sourceTree = "<group>"; };
 		A4B2C1042185D6B2000140C7 /* Instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4B2C1072185D6B3000140C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4B2C1092185D6B3000140C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 		A4B2C11C2185DCCF000140C7 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				A452C5CE21899B1600F76262 /* Swipe Left.png */,
 				A41CCDA32188888900367E85 /* Swipe Up.png */,
 				A41CCD9E2188853300367E85 /* Delm-Medium.otf */,
 				A41CCD9D2188853300367E85 /* ThirstySoftRegular.otf */,
@@ -181,6 +184,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A452C5CF21899B1600F76262 /* Swipe Left.png in Resources */,
 				A4B2C12B218641BF000140C7 /* Button Layout 3.png in Resources */,
 				A4B2C12C218641BF000140C7 /* Button Layout 1.png in Resources */,
 				A4B2C1122185D6B5000140C7 /* LaunchScreen.storyboard in Resources */,

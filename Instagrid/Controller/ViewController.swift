@@ -219,3 +219,9 @@ extension UIImage{
     }
 }
 
+// allows the landscape mode for the image picker
+extension UIImagePickerController {
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .all
+    }
+}
