@@ -174,26 +174,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 gridView.transform = CGAffineTransform(translationX: translation.x, y: 0)
             }
         case .ended, .cancelled :
-            if translation.y < -UIScreen.main.bounds.height / 4 {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.gridView.transform = CGAffineTransform(translationX: 0, y: -UIScreen.main.bounds.height)
-                }) { (success) in
-                    if success {
-                        self.shareImage(self.gridView)
+            if UIApplication.shared.statusBarOrientation == .portrait {
+                if translation.y < -UIScreen.main.bounds.height / 4 {
+                    UIView.animate(withDuration: 0.3, animations: {
+                        self.gridView.transform = CGAffineTransform(translationX: 0, y: -UIScreen.main.bounds.height)
+                    }) { (success) in
+                        if success {
+                            self.shareImage(self.gridView)
+                        }
                     }
                 }
-            }
-            else if translation.x < -UIScreen.main.bounds.width / 4 {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.gridView.transform = CGAffineTransform(translationX: -UIScreen.main.bounds.width, y: 0)
-                }) { (success) in
-                    if success {
-                        self.shareImage(self.gridView)
-                    }
+                else {
+                    resetGridViewPosition()
                 }
             }
             else {
-                resetGridViewPosition()
+                if translation.x < -UIScreen.main.bounds.width / 4 {
+                    UIView.animate(withDuration: 0.3, animations: {
+                        self.gridView.transform = CGAffineTransform(translationX: -UIScreen.main.bounds.width, y: 0)
+                    }) { (success) in
+                        if success {
+                            self.shareImage(self.gridView)
+                        }
+                    }
+                }
+                else {
+                    resetGridViewPosition()
+                }
             }
         default:
             break

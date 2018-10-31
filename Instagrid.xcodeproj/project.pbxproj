@@ -55,6 +55,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A44F87862189FD850060F19E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A452C5CE21899B1600F76262 /* Swipe Left.png */,
+				A41CCDA32188888900367E85 /* Swipe Up.png */,
+				A41CCD9B218882D000367E85 /* Launch Icon.png */,
+				A4B2C129218641BF000140C7 /* Button Layout 1.png */,
+				A4B2C127218641BF000140C7 /* Button Layout 2.png */,
+				A4B2C128218641BF000140C7 /* Button Layout 3.png */,
+				A4B2C12D218642AB000140C7 /* Button Selected.png */,
+				A4B2C1232186167F000140C7 /* Add Image.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		A44F87872189FD920060F19E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A41CCD9E2188853300367E85 /* Delm-Medium.otf */,
+				A41CCD9D2188853300367E85 /* ThirstySoftRegular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		A4B2C0FB2185D6B2000140C7 = {
 			isa = PBXGroup;
 			children = (
@@ -100,16 +124,8 @@
 		A4B2C11C2185DCCF000140C7 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
-				A452C5CE21899B1600F76262 /* Swipe Left.png */,
-				A41CCDA32188888900367E85 /* Swipe Up.png */,
-				A41CCD9E2188853300367E85 /* Delm-Medium.otf */,
-				A41CCD9D2188853300367E85 /* ThirstySoftRegular.otf */,
-				A41CCD9B218882D000367E85 /* Launch Icon.png */,
-				A4B2C129218641BF000140C7 /* Button Layout 1.png */,
-				A4B2C127218641BF000140C7 /* Button Layout 2.png */,
-				A4B2C128218641BF000140C7 /* Button Layout 3.png */,
-				A4B2C12D218642AB000140C7 /* Button Selected.png */,
-				A4B2C1232186167F000140C7 /* Add Image.png */,
+				A44F87862189FD850060F19E /* Images */,
+				A44F87872189FD920060F19E /* Fonts */,
 				A4B2C1072185D6B3000140C7 /* AppDelegate.swift */,
 				A4B2C10E2185D6B5000140C7 /* Assets.xcassets */,
 				A4B2C1102185D6B5000140C7 /* LaunchScreen.storyboard */,
