@@ -18,6 +18,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var buttonImage2: UIButton!
     @IBOutlet weak var buttonImage3: UIButton!
     @IBOutlet weak var buttonImage4: UIButton!
+    @IBOutlet weak var backgroundColorButtons: UIStackView!
     @IBOutlet weak var buttonColor1: UIButton!
     @IBOutlet weak var buttonColor2: UIButton!
     @IBOutlet weak var buttonColor3: UIButton!
@@ -59,7 +60,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.present(imagePicker, animated: true)
     }
     
-    // changes the background color
+    // background color selection
     @IBAction func tapbuttonColor1(_ sender: Any) {
         gridView.backgroundColor = buttonColor1.backgroundColor
     }
@@ -88,15 +89,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyRoundCorners(buttonColor1)
-        applyRoundCorners(buttonColor2)
-        applyRoundCorners(buttonColor2)
-        applyRoundCorners(buttonColor3)
-        applyRoundCorners(buttonColor4)
-        applyRoundCorners(buttonColor5)
-        applyRoundCorners(buttonColor6)
-        applyRoundCorners(buttonColor7)
-        applyRoundCorners(buttonColor8)
+        roundButtons()
         setLayout(2)
         imagePicker.delegate = self
         imagePicker.sourceType = .savedPhotosAlbum
@@ -164,6 +157,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @objc func swipeGridView(_ sender: UIPanGestureRecognizer){
         let translation = sender.translation(in: gridView)
         switch sender.state {
+        // follows the gesture
         case .began, .changed :
             if UIApplication.shared.statusBarOrientation == .portrait {
                 if translation.y > 0 { return } // no swiping down
@@ -173,33 +167,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 if translation.x > 0 { return } // no swiping right
                 gridView.transform = CGAffineTransform(translationX: translation.x, y: 0)
             }
+        // the gesture ends : if the user has not swipe enough, resets position
         case .ended, .cancelled :
-            if UIApplication.shared.statusBarOrientation == .portrait {
+            if UIApplication.shared.statusBarOrientation == .portrait { // swiping up
                 if translation.y < -UIScreen.main.bounds.height / 4 {
                     UIView.animate(withDuration: 0.3, animations: {
                         self.gridView.transform = CGAffineTransform(translationX: 0, y: -UIScreen.main.bounds.height)
                     }) { (success) in
                         if success {
                             self.shareImage(self.gridView)
+                            self.resetGridView()
                         }
                     }
                 }
                 else {
-                    resetGridViewPosition()
+                    resetGridViewPosition(animate: true)
                 }
             }
-            else {
+            else { // swiping left
                 if translation.x < -UIScreen.main.bounds.width / 4 {
                     UIView.animate(withDuration: 0.3, animations: {
                         self.gridView.transform = CGAffineTransform(translationX: -UIScreen.main.bounds.width, y: 0)
                     }) { (success) in
                         if success {
                             self.shareImage(self.gridView)
+                            self.resetGridView()
                         }
                     }
                 }
                 else {
-                    resetGridViewPosition()
+                    resetGridViewPosition(animate: true)
                 }
             }
         default:
@@ -207,21 +204,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    // puts the gridView to the center
-    func resetGridViewPosition() {
+    // removes all images in the gridview
+    func resetGridView() {
+        for case let button as UIButton in gridView.getAllSubviews() {
+            button.setImage(UIImage(named: "Add Image.png"), for: .normal)
+        }
+    }
+    
+    // puts the gridView back to the center
+    func resetGridViewPosition(animate: Bool) {
+        if animate {
         UIView.animate(withDuration: 0.2, animations: {
             self.gridView.transform = CGAffineTransform(translationX: 0, y: 0)
         })
+        }
+        else {
+            self.gridView.transform = CGAffineTransform(translationX: 0, y: 0)
+        }
     }
     
     // shares an image
     func shareImage(_ view: UIView) {
         let image =  UIImage.init(view)
         let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        present(activityViewController, animated: true, completion: resetGridViewPosition)
+        present(activityViewController, animated: true, completion: {self.resetGridViewPosition(animate: false)})
     }
     
-    // makes the buttons round
+    // makes the color buttons round
+    func roundButtons() {
+        for case let button as UIButton in backgroundColorButtons.subviews {
+            applyRoundCorners(button)
+        }
+    }
+    
+    // rounds the corner of an object
     func applyRoundCorners(_ object: AnyObject) {
         object.layer.cornerRadius = object.frame.size.width / 2
         object.layer.masksToBounds = true
@@ -236,7 +252,6 @@ extension UIImage{
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         self.init(cgImage: (image?.cgImage)!)
-        
     }
 }
 
@@ -244,5 +259,22 @@ extension UIImage{
 extension UIImagePickerController {
     override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .all
+    }
+}
+
+// gets all the subviews of a view and its subviews
+extension UIView {
+    class func getAllSubviews<T: UIView>(_ view: UIView) -> [T] {
+        return view.subviews.flatMap { subView -> [T] in
+            var result = getAllSubviews(subView) as [T]
+            if let view = subView as? T {
+                result.append(view)
+            }
+            return result
+        }
+    }
+    
+    func getAllSubviews<T: UIView>() -> [T] {
+        return UIView.getAllSubviews(self) as [T]
     }
 }

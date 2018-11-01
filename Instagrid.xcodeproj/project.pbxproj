@@ -79,6 +79,13 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		A49DF906218AF46A00C9DFB6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A4B2C0FB2185D6B2000140C7 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				A4B2C11C2185DCCF000140C7 /* Supporting files */,
+				A49DF906218AF46A00C9DFB6 /* Model */,
 				A4B2C11B2185DC9E000140C7 /* View */,
 				A4B2C11A2185DC97000140C7 /* Controller */,
 			);

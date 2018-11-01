@@ -44,6 +44,9 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wn-eV-cpZ">
                                 <rect key="frame" x="148" y="54" width="118.5" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="sET-ez-dqW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -290,18 +293,18 @@
                                 <exclude reference="AzE-wg-bFS"/>
                                 <exclude reference="DxV-if-jAt"/>
                                 <exclude reference="pHd-O6-bFs"/>
-                                <exclude reference="B19-qg-pYc"/>
-                                <exclude reference="i3j-g7-Ve0"/>
-                                <exclude reference="lDa-lq-WHw"/>
                                 <exclude reference="6T3-Ap-6rz"/>
                                 <exclude reference="6hE-oW-USm"/>
                                 <exclude reference="A7j-KX-yfu"/>
                                 <exclude reference="OI2-NV-VV4"/>
                                 <exclude reference="iG7-b5-Dpx"/>
-                                <exclude reference="qWV-s8-uTw"/>
                                 <exclude reference="BmO-6u-Xf1"/>
                                 <exclude reference="JvM-Vu-Igu"/>
                                 <exclude reference="a1d-e2-FWk"/>
+                                <exclude reference="B19-qg-pYc"/>
+                                <exclude reference="i3j-g7-Ve0"/>
+                                <exclude reference="lDa-lq-WHw"/>
+                                <exclude reference="qWV-s8-uTw"/>
                                 <exclude reference="i1s-yE-Nd7"/>
                                 <exclude reference="4la-he-Das"/>
                                 <exclude reference="WHK-gj-Eyw"/>
@@ -315,15 +318,12 @@
                                 <exclude reference="kvG-gh-asw"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Aqt-h1-MZD"/>
                                 <include reference="AzE-wg-bFS"/>
                                 <exclude reference="DxV-if-jAt"/>
                                 <exclude reference="eYc-a5-gcu"/>
                                 <include reference="pHd-O6-bFs"/>
                                 <exclude reference="ttT-LY-Z2R"/>
-                                <include reference="B19-qg-pYc"/>
-                                <include reference="i3j-g7-Ve0"/>
-                                <include reference="lDa-lq-WHw"/>
+                                <exclude reference="Aqt-h1-MZD"/>
                                 <exclude reference="6T3-Ap-6rz"/>
                                 <include reference="6hE-oW-USm"/>
                                 <exclude reference="A7j-KX-yfu"/>
@@ -332,12 +332,15 @@
                                 <include reference="OI2-NV-VV4"/>
                                 <exclude reference="bjj-Gg-PC3"/>
                                 <include reference="iG7-b5-Dpx"/>
-                                <exclude reference="icQ-PZ-2mv"/>
-                                <include reference="qWV-s8-uTw"/>
                                 <include reference="BmO-6u-Xf1"/>
                                 <include reference="JvM-Vu-Igu"/>
                                 <include reference="a1d-e2-FWk"/>
                                 <exclude reference="gYP-JF-Lek"/>
+                                <include reference="B19-qg-pYc"/>
+                                <include reference="i3j-g7-Ve0"/>
+                                <include reference="lDa-lq-WHw"/>
+                                <exclude reference="icQ-PZ-2mv"/>
+                                <include reference="qWV-s8-uTw"/>
                                 <exclude reference="gb3-MV-7t0"/>
                                 <exclude reference="i1s-yE-Nd7"/>
                                 <exclude reference="pYE-th-oR3"/>
@@ -352,6 +355,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="backgroundColorButtons" destination="88r-en-IIw" id="2Nb-W6-eDO"/>
                         <outlet property="buttonColor1" destination="QzV-Vo-Frc" id="ttw-LA-cnz"/>
                         <outlet property="buttonColor2" destination="Z4Y-bD-t3L" id="uul-1a-KYd"/>
                         <outlet property="buttonColor3" destination="lgs-Et-L8L" id="JTG-Ur-7g8"/>
