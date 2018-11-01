@@ -11,86 +11,40 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var gridView: UIView!
-    @IBOutlet weak var buttonLayout1: UIButton!
-    @IBOutlet weak var buttonLayout2: UIButton!
-    @IBOutlet weak var buttonLayout3: UIButton!
-    @IBOutlet weak var buttonImage1: UIButton!
-    @IBOutlet weak var buttonImage2: UIButton!
-    @IBOutlet weak var buttonImage3: UIButton!
-    @IBOutlet weak var buttonImage4: UIButton!
     @IBOutlet weak var backgroundColorButtons: UIStackView!
-    @IBOutlet weak var buttonColor1: UIButton!
-    @IBOutlet weak var buttonColor2: UIButton!
-    @IBOutlet weak var buttonColor3: UIButton!
-    @IBOutlet weak var buttonColor4: UIButton!
-    @IBOutlet weak var buttonColor5: UIButton!
-    @IBOutlet weak var buttonColor6: UIButton!
-    @IBOutlet weak var buttonColor7: UIButton!
-    @IBOutlet weak var buttonColor8: UIButton!
+    @IBOutlet weak var layoutButtons: UIStackView!
     
     var imagePicker = UIImagePickerController()
     var buttonSender: UIButton!
-    
-    // Layout buttons selection
-    @IBAction func tapButtonLayout1(_ sender: Any) {
-        setLayout(1)
-    }
-    @IBAction func tapButtonLayout2(_ sender: Any) {
-        setLayout(2)
-    }
-    @IBAction func tapButtonLayout3(_ sender: Any) {
-        setLayout(3)
+    var activeLayout = 0 {
+        didSet {
+            if activeLayout != oldValue {
+                selectGridLayout(activeLayout)
+                selectButtonLayout(activeLayout)
+            }
+        }
     }
     
-    // Image buttons selection
-    @IBAction func tapButtonImage1(_ sender: Any) {
-        buttonSender = buttonImage1
-        self.present(imagePicker, animated: true)
+    // Layout selection
+    @IBAction func changeLayout(_ sender: UIButton) {
+        activeLayout = sender.tag
     }
-    @IBAction func tapButtonImage2(_ sender: Any) {
-        buttonSender = buttonImage2
-        self.present(imagePicker, animated: true)
-    }
-    @IBAction func tapButtonImage3(_ sender: Any) {
-        buttonSender = buttonImage3
-        self.present(imagePicker, animated: true)
-    }
-    @IBAction func tapButtonImage4(_ sender: Any) {
-        buttonSender = buttonImage4
+    
+    // Image selection
+    @IBAction func changeImage(_ sender: UIButton) {
+        buttonSender = sender
         self.present(imagePicker, animated: true)
     }
     
-    // background color selection
-    @IBAction func tapbuttonColor1(_ sender: Any) {
-        gridView.backgroundColor = buttonColor1.backgroundColor
+    // Background color selection
+    @IBAction func changeBackgroundColor(_ sender: UIButton) {
+        gridView.backgroundColor = sender.backgroundColor
     }
-    @IBAction func tapbuttonColor2(_ sender: Any) {
-        gridView.backgroundColor = buttonColor2.backgroundColor
-    }
-    @IBAction func tapbuttonColor3(_ sender: Any) {
-        gridView.backgroundColor = buttonColor3.backgroundColor
-    }
-    @IBAction func tapbuttonColor4(_ sender: Any) {
-        gridView.backgroundColor = buttonColor4.backgroundColor
-    }
-    @IBAction func tapbuttonColor5(_ sender: Any) {
-        gridView.backgroundColor = buttonColor5.backgroundColor
-    }
-    @IBAction func tapbuttonColor6(_ sender: Any) {
-        gridView.backgroundColor = buttonColor6.backgroundColor
-    }
-    @IBAction func tapbuttonColor7(_ sender: Any) {
-        gridView.backgroundColor = buttonColor7.backgroundColor
-    }
-    @IBAction func tapbuttonColor8(_ sender: Any) {
-        gridView.backgroundColor = buttonColor8.backgroundColor
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         roundButtons()
-        setLayout(2)
+        activeLayout = 2
         imagePicker.delegate = self
         imagePicker.sourceType = .savedPhotosAlbum
         imagePicker.allowsEditing = false
@@ -111,45 +65,47 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismiss(animated: true)
     }
     
+    // selects the current layout button
+    func selectButtonLayout(_ selectedLayout: Int) {
+        for case let button as UIButton in layoutButtons.subviews {
+            if button.tag == selectedLayout {
+                button.setImage(UIImage(named: "Button Selected.png"), for: .normal)
+            } else {
+                button.setImage(nil, for: .normal)
+            }
+        }
+    }
+    
     // sets the grid layout
-    func setLayout(_ layout: Int) {
-        switch layout {
-        case 1:
-            selectButtonLayout(buttonLayout1)
-            hideButton(buttonImage2)
-            showButton(buttonImage4)
-        case 2:
-            selectButtonLayout(buttonLayout2)
-            showButton(buttonImage2)
-            hideButton(buttonImage4)
-        case 3:
-            selectButtonLayout(buttonLayout3)
-            showButton(buttonImage2)
-            showButton(buttonImage4)
+    func selectGridLayout(_ selectedLayout: Int) {
+        switch selectedLayout {
+        case 1: // layout with tags 0 and 1
+            for case let button as UIButton in gridView.getAllSubviews() {
+                if button.tag == 1 && button.isHidden == true || button.tag == 2 && button.isHidden == false {
+                    switchViewWithAnimation(button)
+                }
+            }
+        case 2: // layout with tags 0 and 2
+            for case let button as UIButton in gridView.getAllSubviews() {
+                if button.tag == 2 && button.isHidden == true || button.tag == 1 && button.isHidden == false {
+                    switchViewWithAnimation(button)
+                }
+            }
+        case 3: // layout with tags 0, 1 and 2
+            for case let button as UIButton in gridView.getAllSubviews() {
+                if (button.tag == 1 || button.tag == 2) && button.isHidden == true {
+                    switchViewWithAnimation(button)
+                }
+            }
         default:
             break
         }
     }
-    
-    // selects the current layout button
-    func selectButtonLayout(_ buttonLayout: UIButton) {
-        buttonLayout1.setImage(nil, for: .normal)
-        buttonLayout2.setImage(nil, for: .normal)
-        buttonLayout3.setImage(nil, for: .normal)
-        buttonLayout.setImage(UIImage(named: "Button Selected.png"), for: .normal)
-    }
 
-    // shows the button image
-    func showButton(_ button: UIButton) {
-        UIView.transition(with: button, duration: 0.4, options: .transitionCrossDissolve, animations: {
-            button.isHidden = false
-        }, completion: nil)
-    }
-    
-    // hides the button image
-    func hideButton(_ button: UIButton) {
-        UIView.transition(with: button, duration: 0.4, options: .transitionCrossDissolve, animations: {
-            button.isHidden = true
+    // shows or hides a view with an animation
+    func switchViewWithAnimation(_ view: UIView) {
+        UIView.transition(with: view, duration: 0.4, options: .transitionFlipFromLeft, animations: {
+            view.isHidden = view.isHidden ? false : true
         }, completion: nil)
     }
     

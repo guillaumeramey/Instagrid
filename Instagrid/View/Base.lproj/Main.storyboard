@@ -60,12 +60,12 @@
                                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="EpA-Gf-B2O" userLabel="Grid row 1">
                                                 <rect key="frame" x="0.0" y="0.0" width="344" height="164.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNs-rS-osp" userLabel="Button Image 1">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNs-rS-osp" userLabel="Button Image 1">
                                                         <rect key="frame" x="0.0" y="0.0" width="164.5" height="164.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Add Image.png"/>
                                                         <connections>
-                                                            <action selector="tapButtonImage1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cat-kp-Dz2"/>
+                                                            <action selector="changeImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="weu-mW-2oR"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhh-0s-Yh1" userLabel="Button Image 2">
@@ -73,7 +73,7 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Add Image.png"/>
                                                         <connections>
-                                                            <action selector="tapButtonImage2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Kk-61-WcU"/>
+                                                            <action selector="changeImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i4q-4a-OZj"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -81,20 +81,20 @@
                                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="UvV-Om-tNc" userLabel="Grid row 2">
                                                 <rect key="frame" x="0.0" y="179.5" width="344" height="164.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2E-dO-Hv9" userLabel="Button Image 3">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2E-dO-Hv9" userLabel="Button Image 3">
                                                         <rect key="frame" x="0.0" y="0.0" width="164.5" height="164.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Add Image.png"/>
                                                         <connections>
-                                                            <action selector="tapButtonImage3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BZj-pG-AM7"/>
+                                                            <action selector="changeImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wH2-ll-WvK"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHO-5e-5MJ" userLabel="Button Image 4">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHO-5e-5MJ" userLabel="Button Image 4">
                                                         <rect key="frame" x="179.5" y="0.0" width="164.5" height="164.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Add Image.png"/>
                                                         <connections>
-                                                            <action selector="tapButtonImage4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1vH-dk-qmz"/>
+                                                            <action selector="changeImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="maQ-8W-reU"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -112,10 +112,10 @@
                                     <constraint firstAttribute="width" secondItem="3g4-cp-Xcu" secondAttribute="height" multiplier="1:1" id="yxJ-mI-XEo"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="BpS-Ac-ekf" userLabel="Layout selection">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="BpS-Ac-ekf" userLabel="Layout buttons">
                                 <rect key="frame" x="20" y="762" width="374" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0r-CP-TtH" userLabel="Button layout 1">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0r-CP-TtH" userLabel="Button layout 1">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -123,10 +123,10 @@
                                         </constraints>
                                         <state key="normal" backgroundImage="Button Layout 1.png"/>
                                         <connections>
-                                            <action selector="tapButtonLayout1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mh7-yL-PFB"/>
+                                            <action selector="changeLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a0z-Jq-azi"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnF-FD-qyq" userLabel="Button layout 2">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnF-FD-qyq" userLabel="Button layout 2">
                                         <rect key="frame" x="147" y="0.0" width="80" height="80"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -134,10 +134,10 @@
                                         </constraints>
                                         <state key="normal" image="Button Selected.png" backgroundImage="Button Layout 2.png"/>
                                         <connections>
-                                            <action selector="tapButtonLayout2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tey-FH-aIf"/>
+                                            <action selector="changeLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ODt-Jf-UIq"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZC-3u-Aap" userLabel="Button layout 3">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZC-3u-Aap" userLabel="Button layout 3">
                                         <rect key="frame" x="294" y="0.0" width="80" height="80"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -145,7 +145,7 @@
                                         </constraints>
                                         <state key="normal" backgroundImage="Button Layout 3.png"/>
                                         <connections>
-                                            <action selector="tapButtonLayout3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="krx-Fy-5km"/>
+                                            <action selector="changeLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rxf-Fv-7eL"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -161,7 +161,7 @@
                                             <constraint firstAttribute="width" secondItem="QzV-Vo-Frc" secondAttribute="height" multiplier="1:1" id="drf-t2-I1A"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="tapbuttonColor1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BfN-ap-44g"/>
+                                            <action selector="changeBackgroundColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WMd-k1-zZt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4Y-bD-t3L">
@@ -171,7 +171,7 @@
                                             <constraint firstAttribute="width" secondItem="Z4Y-bD-t3L" secondAttribute="height" multiplier="1:1" id="csm-di-0zt"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="tapbuttonColor2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9r4-pL-EHM"/>
+                                            <action selector="changeBackgroundColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yXF-f2-c0X"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgs-Et-L8L">
@@ -181,7 +181,7 @@
                                             <constraint firstAttribute="width" secondItem="lgs-Et-L8L" secondAttribute="height" multiplier="1:1" id="g8h-ph-412"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="tapbuttonColor3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="205-ye-yvg"/>
+                                            <action selector="changeBackgroundColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pc3-O4-MZY"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bva-9C-uJT">
@@ -191,7 +191,7 @@
                                             <constraint firstAttribute="width" secondItem="Bva-9C-uJT" secondAttribute="height" multiplier="1:1" id="ePP-Pq-wqG"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="tapbuttonColor4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y8z-KC-oI0"/>
+                                            <action selector="changeBackgroundColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XWy-To-2Nd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoc-C7-4PG">
@@ -201,7 +201,7 @@
                                             <constraint firstAttribute="width" secondItem="zoc-C7-4PG" secondAttribute="height" multiplier="1:1" id="Z3N-gf-ZLD"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="tapbuttonColor5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s1d-U0-aZG"/>
+                                            <action selector="changeBackgroundColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4I7-7l-pjI"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Biy-Aj-A7G">
@@ -211,7 +211,7 @@
                                             <constraint firstAttribute="width" secondItem="Biy-Aj-A7G" secondAttribute="height" multiplier="1:1" id="KWw-bw-M3u"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="tapbuttonColor6:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kwX-UT-EfU"/>
+                                            <action selector="changeBackgroundColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eys-QA-g70"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHB-0T-gw2">
@@ -221,7 +221,7 @@
                                             <constraint firstAttribute="width" secondItem="NHB-0T-gw2" secondAttribute="height" multiplier="1:1" id="9J3-US-OYz"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="tapbuttonColor7:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ekz-Xg-2Ny"/>
+                                            <action selector="changeBackgroundColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dMS-SI-G8s"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdX-fu-vJU">
@@ -231,7 +231,7 @@
                                             <constraint firstAttribute="width" secondItem="bdX-fu-vJU" secondAttribute="height" multiplier="1:1" id="9Mo-fr-WJB"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="tapbuttonColor8:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ICK-hE-m4P"/>
+                                            <action selector="changeBackgroundColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i9L-IU-8hq"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -356,22 +356,8 @@
                     </view>
                     <connections>
                         <outlet property="backgroundColorButtons" destination="88r-en-IIw" id="2Nb-W6-eDO"/>
-                        <outlet property="buttonColor1" destination="QzV-Vo-Frc" id="ttw-LA-cnz"/>
-                        <outlet property="buttonColor2" destination="Z4Y-bD-t3L" id="uul-1a-KYd"/>
-                        <outlet property="buttonColor3" destination="lgs-Et-L8L" id="JTG-Ur-7g8"/>
-                        <outlet property="buttonColor4" destination="Bva-9C-uJT" id="cEX-9N-JKW"/>
-                        <outlet property="buttonColor5" destination="zoc-C7-4PG" id="yWA-r9-Tgi"/>
-                        <outlet property="buttonColor6" destination="Biy-Aj-A7G" id="rcw-dh-XJr"/>
-                        <outlet property="buttonColor7" destination="NHB-0T-gw2" id="VAC-HY-2dV"/>
-                        <outlet property="buttonColor8" destination="bdX-fu-vJU" id="fgZ-60-cxZ"/>
-                        <outlet property="buttonImage1" destination="KNs-rS-osp" id="dMM-A7-9Xd"/>
-                        <outlet property="buttonImage2" destination="Vhh-0s-Yh1" id="bhL-G6-igX"/>
-                        <outlet property="buttonImage3" destination="o2E-dO-Hv9" id="LGV-2g-cLc"/>
-                        <outlet property="buttonImage4" destination="AHO-5e-5MJ" id="FQa-R3-weG"/>
-                        <outlet property="buttonLayout1" destination="V0r-CP-TtH" id="Uzi-Xj-mmG"/>
-                        <outlet property="buttonLayout2" destination="TnF-FD-qyq" id="vLK-qL-C8m"/>
-                        <outlet property="buttonLayout3" destination="dZC-3u-Aap" id="6Da-4t-Ung"/>
                         <outlet property="gridView" destination="3g4-cp-Xcu" id="1zR-AZ-bmX"/>
+                        <outlet property="layoutButtons" destination="BpS-Ac-ekf" id="VbQ-Ax-ifv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
