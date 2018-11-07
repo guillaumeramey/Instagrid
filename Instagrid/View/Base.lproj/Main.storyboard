@@ -32,9 +32,9 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact" hidden="NO"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Swipe Up.png" translatesAutoresizingMaskIntoConstraints="NO" id="nfH-X0-Q0P">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Swipe up" translatesAutoresizingMaskIntoConstraints="NO" id="nfH-X0-Q0P">
                                 <rect key="frame" x="199.5" y="202" width="15" height="10"/>
-                                <variation key="heightClass=compact" image="Swipe Left.png"/>
+                                <variation key="heightClass=compact" image="Swipe left"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvG-gh-asw">
                                 <rect key="frame" x="127" y="222" width="160.5" height="29"/>
@@ -51,7 +51,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3g4-cp-Xcu">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3g4-cp-Xcu" userLabel="Layout View" customClass="LayoutView" customModule="Instagrid" customModuleProvider="target">
                                 <rect key="frame" x="20" y="261" width="374" height="374"/>
                                 <subviews>
                                     <stackView contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="pGl-kB-oLM">
@@ -63,7 +63,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNs-rS-osp" userLabel="Button Image 1">
                                                         <rect key="frame" x="0.0" y="0.0" width="164.5" height="164.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" image="Add Image.png"/>
+                                                        <state key="normal" image="Add image"/>
                                                         <connections>
                                                             <action selector="changeImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="weu-mW-2oR"/>
                                                         </connections>
@@ -71,7 +71,7 @@
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhh-0s-Yh1" userLabel="Button Image 2">
                                                         <rect key="frame" x="179.5" y="0.0" width="164.5" height="164.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" image="Add Image.png"/>
+                                                        <state key="normal" image="Add image"/>
                                                         <connections>
                                                             <action selector="changeImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i4q-4a-OZj"/>
                                                         </connections>
@@ -84,7 +84,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2E-dO-Hv9" userLabel="Button Image 3">
                                                         <rect key="frame" x="0.0" y="0.0" width="164.5" height="164.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" image="Add Image.png"/>
+                                                        <state key="normal" image="Add image"/>
                                                         <connections>
                                                             <action selector="changeImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wH2-ll-WvK"/>
                                                         </connections>
@@ -92,7 +92,7 @@
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHO-5e-5MJ" userLabel="Button Image 4">
                                                         <rect key="frame" x="179.5" y="0.0" width="164.5" height="164.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" image="Add Image.png"/>
+                                                        <state key="normal" image="Add image"/>
                                                         <connections>
                                                             <action selector="changeImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="maQ-8W-reU"/>
                                                         </connections>
@@ -121,7 +121,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="V0r-CP-TtH" secondAttribute="height" multiplier="1:1" id="W7v-bh-Xt5"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="Button Layout 1.png"/>
+                                        <state key="normal" backgroundImage="Layout 1"/>
                                         <connections>
                                             <action selector="changeLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a0z-Jq-azi"/>
                                         </connections>
@@ -132,7 +132,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="TnF-FD-qyq" secondAttribute="height" multiplier="1:1" id="IVS-ke-sG6"/>
                                         </constraints>
-                                        <state key="normal" image="Button Selected.png" backgroundImage="Button Layout 2.png"/>
+                                        <state key="normal" image="Selected" backgroundImage="Layout 2"/>
                                         <connections>
                                             <action selector="changeLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ODt-Jf-UIq"/>
                                         </connections>
@@ -143,7 +143,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="dZC-3u-Aap" secondAttribute="height" multiplier="1:1" id="wHa-xw-aeC"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="Button Layout 3.png"/>
+                                        <state key="normal" backgroundImage="Layout 3"/>
                                         <connections>
                                             <action selector="changeLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rxf-Fv-7eL"/>
                                         </connections>
@@ -356,8 +356,8 @@
                     </view>
                     <connections>
                         <outlet property="backgroundColorButtons" destination="88r-en-IIw" id="2Nb-W6-eDO"/>
-                        <outlet property="gridView" destination="3g4-cp-Xcu" id="1zR-AZ-bmX"/>
                         <outlet property="layoutButtons" destination="BpS-Ac-ekf" id="VbQ-Ax-ifv"/>
+                        <outlet property="layoutView" destination="3g4-cp-Xcu" id="GwI-fr-tNJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -366,12 +366,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add Image.png" width="48" height="49"/>
-        <image name="Button Layout 1.png" width="80" height="80"/>
-        <image name="Button Layout 2.png" width="80" height="80"/>
-        <image name="Button Layout 3.png" width="80" height="80"/>
-        <image name="Button Selected.png" width="80" height="80"/>
-        <image name="Swipe Left.png" width="10" height="15"/>
-        <image name="Swipe Up.png" width="15" height="10"/>
+        <image name="Add image" width="48" height="48"/>
+        <image name="Layout 1" width="80" height="80"/>
+        <image name="Layout 2" width="80" height="80"/>
+        <image name="Layout 3" width="80" height="80"/>
+        <image name="Selected" width="80" height="80"/>
+        <image name="Swipe left" width="10" height="15"/>
+        <image name="Swipe up" width="15" height="10"/>
     </resources>
 </document>
