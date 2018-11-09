@@ -3,12 +3,58 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var layoutView: LayoutView!
-    @IBOutlet weak var backgroundColorButtons: UIStackView!
     @IBOutlet weak var layoutButtons: UIStackView!
+    @IBOutlet weak var colorButtons: UIStackView!
+    @IBOutlet weak var thicknessButtons: UIStackView!
     
-    var imagePicker = UIImagePickerController()
-    var buttonSender: UIButton!
+    var imagePicker = UIImagePickerController() // lets the user pick an image
+    var buttonSender: UIButton! // permits multiple image pickers in a view
+    var layoutOrigin = CGPoint(x: 0 , y: 0) // original position of the layout
+    var thicknessSize = CGFloat(15) // margins thickness
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        roundButtons()
+        
+        layoutView.layout = 2
+        layoutOrigin = layoutView.bounds.origin
+        
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.modalPresentationStyle = .overCurrentContext // allows the landscape mode for the image picker
+        
+        let swipeUpRec = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp))
+        swipeUpRec.direction = .up
+        layoutView.addGestureRecognizer(swipeUpRec)
+        
+        let swipeLeftRec = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
+        swipeLeftRec.direction = .left
+        layoutView.addGestureRecognizer(swipeLeftRec)
+        
+    }
+    
+    // makes the color buttons round
+    func roundButtons() {
+        for case let button as UIButton in colorButtons.subviews {
+            button.layer.cornerRadius = button.frame.size.width / 2
+        }
+    }
+    
+    // selects the current layout button
+    func selectButtonLayout(_ selectedLayout: Int) {
+        for case let button as UIButton in layoutButtons.subviews {
+            if button.tag == selectedLayout {
+                button.setImage(UIImage(named: "Selected"), for: .normal)
+            }
+            else {
+                button.setImage(nil, for: .normal)
+            }
+        }
+    }
+    
+    // MARK: ********** @IBACTIONS **********
+
     // Layout selection
     @IBAction func changeLayout(_ sender: UIButton) {
         layoutView.layout = sender.tag
@@ -26,16 +72,57 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         layoutView.backgroundColor = sender.backgroundColor
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        roundButtons()
-        layoutView.layout = 2
-        imagePicker.delegate = self
-        imagePicker.sourceType = .savedPhotosAlbum
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragLayoutView(_:)))
-        layoutView.addGestureRecognizer(panGestureRecognizer)
+    // Background color selection
+    @IBAction func changeThickness(_ sender: UIButton) {
+        if sender.tag == 0 {
+            if thicknessSize > 0 {
+                thicknessSize -= 3
+                layoutView.changeMarginThickness(size: thicknessSize)
+            }
+        } else {
+            if thicknessSize < 15 {
+                thicknessSize += 3
+                layoutView.changeMarginThickness(size: thicknessSize)
+            }
+        }
     }
     
+    // MARK: ********** GESTURES **********
+    
+    @objc func swipedUp() {
+        if UIApplication.shared.statusBarOrientation == .portrait {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.layoutView.transform = CGAffineTransform(translationX: 0, y: -UIScreen.main.bounds.height)
+            }) { (success) in
+                if success {
+                    self.shareImage(self.layoutView)
+                }
+            }
+        }
+    }
+    
+    @objc func swipedLeft() {
+        if UIApplication.shared.statusBarOrientation == .landscapeLeft
+            || UIApplication.shared.statusBarOrientation == .landscapeRight {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.layoutView.transform = CGAffineTransform(translationX: -UIScreen.main.bounds.width, y: 0)
+            }) { (success) in
+                if success {
+                    self.shareImage(self.layoutView)
+                }
+            }
+        }
+    }
+    
+    // puts the view back to the center
+    func resetLayoutPosition() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.layoutView.transform = CGAffineTransform(translationX: self.layoutOrigin.x, y: self.layoutOrigin.y)
+        })
+    }
+    
+    // MARK: ********** IMAGE **********
+
     // allows the user to select an image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
@@ -49,101 +136,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismiss(animated: true)
     }
     
-    // selects the current layout button
-    func selectButtonLayout(_ selectedLayout: Int) {
-        for case let button as UIButton in layoutButtons.subviews {
-            if button.tag == selectedLayout {
-                button.setImage(UIImage(named: "Selected"), for: .normal)
-            } else {
-                button.setImage(nil, for: .normal)
-            }
-        }
-    }
-    
-    // drag gesture
-    @objc func dragLayoutView(_ sender: UIPanGestureRecognizer){
-        let translation = sender.translation(in: layoutView)
-        switch sender.state {
-        case .began, .changed :
-            if UIApplication.shared.statusBarOrientation == .portrait {
-                if translation.y > 0 { return } // no drag down
-                layoutView.transform = CGAffineTransform(translationX: 0, y: translation.y)
-            }
-            else {
-                if translation.x > 0 { return } // no drag right
-                layoutView.transform = CGAffineTransform(translationX: translation.x, y: 0)
-            }
-        case .ended, .cancelled :
-            if UIApplication.shared.statusBarOrientation == .portrait { // drag up
-                if translation.y < -UIScreen.main.bounds.height / 4 {
-                    UIView.animate(withDuration: 0.3, animations: {
-                        self.layoutView.transform = CGAffineTransform(translationX: 0, y: -UIScreen.main.bounds.height)
-                    }) { (success) in
-                        if success {
-                            self.shareImage(self.layoutView)
-                            self.layoutView.reset()
-                        }
-                    }
-                }
-                else { // the user didn't drag enough
-                    layoutView.resetPosition(animate: true)
-                }
-            }
-            else { // drag left
-                if translation.x < -UIScreen.main.bounds.width / 4 {
-                    UIView.animate(withDuration: 0.3, animations: {
-                        self.layoutView.transform = CGAffineTransform(translationX: -UIScreen.main.bounds.width, y: 0)
-                    }) { (success) in
-                        if success {
-                            self.shareImage(self.layoutView)
-                            self.layoutView.reset()
-                        }
-                    }
-                }
-                else { // the user didn't drag enough
-                    layoutView.resetPosition(animate: true)
-                }
-            }
-        default:
-            break
-        }
-    }
     
     // shares an image
     func shareImage(_ view: UIView) {
-        let image =  UIImage.init(view)
-        let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        present(activityViewController, animated: true, completion: {self.layoutView.resetPosition(animate: false)})
-    }
-    
-    // makes the color buttons round
-    func roundButtons() {
-        for case let button as UIButton in backgroundColorButtons.subviews {
-            applyRoundCorners(button)
+        let imageToShare =  Image().convert(view)
+        let activityVC = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil)
+        activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if completed {
+                self.layoutView.resetImages()
+            }
+            self.resetLayoutPosition()
         }
-    }
-    
-    // rounds the corner of an object
-    func applyRoundCorners(_ object: AnyObject) {
-        object.layer.cornerRadius = object.frame.size.width / 2
-        object.layer.masksToBounds = true
-    }
-}
-
-// converts a view into an image
-extension UIImage{
-    convenience init(_ view: UIView) {
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
-        view.drawHierarchy(in: view.bounds, afterScreenUpdates: false)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        self.init(cgImage: (image?.cgImage)!)
-    }
-}
-
-// allows the landscape mode for the image picker
-extension UIImagePickerController {
-    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .all
+        present(activityVC, animated: true, completion: nil)
     }
 }

@@ -2,6 +2,21 @@ import UIKit
 
 class LayoutView: UIView {
     
+    // buttons / images outlets
+    @IBOutlet weak var imageButton1: UIButton!
+    @IBOutlet weak var imageButton2: UIButton!
+    @IBOutlet weak var imageButton3: UIButton!
+    @IBOutlet weak var imageButton4: UIButton!
+    
+    // Outlets used for thickness
+    @IBOutlet weak var layoutViewTopC: NSLayoutConstraint!
+    @IBOutlet weak var layoutViewBottomC: NSLayoutConstraint!
+    @IBOutlet weak var layoutViewLeftC: NSLayoutConstraint!
+    @IBOutlet weak var layoutViewRightC: NSLayoutConstraint!
+    @IBOutlet weak var layoutViewRow1: UIStackView!
+    @IBOutlet weak var layoutViewRow2: UIStackView!
+    @IBOutlet weak var layoutViewContent: UIStackView!
+    
     var layout: Int = 2 {
         didSet {
             setLayout(layout)
@@ -11,70 +26,54 @@ class LayoutView: UIView {
     // sets the layout
     private func setLayout(_ layout: Int) {
         switch layout {
-        case 1: // layout with tags 0 and 1
-            for case let button as UIButton in self.getAllSubviews() {
-                if button.tag == 1 && button.isHidden == true || button.tag == 2 && button.isHidden == false {
-                    switchViewWithAnimation(button)
-                }
-            }
-        case 2: // layout with tags 0 and 2
-            for case let button as UIButton in self.getAllSubviews() {
-                if button.tag == 2 && button.isHidden == true || button.tag == 1 && button.isHidden == false {
-                    switchViewWithAnimation(button)
-                }
-            }
-        case 3: // layout with tags 0, 1 and 2
-            for case let button as UIButton in self.getAllSubviews() {
-                if (button.tag == 1 || button.tag == 2) && button.isHidden == true {
-                    switchViewWithAnimation(button)
-                }
-            }
+        case 1 :
+            hideView(imageButton2)
+            showView(imageButton4)
+        case 2 :
+            showView(imageButton2)
+            hideView(imageButton4)
+        case 3 :
+            showView(imageButton2)
+            showView(imageButton4)
         default:
             break
         }
     }
     
-    // shows or hides a view with an animation
-    private func switchViewWithAnimation(_ view: UIView) {
-        UIView.transition(with: view, duration: 0.4, options: .transitionFlipFromLeft, animations: {
-            view.isHidden = view.isHidden ? false : true
-        }, completion: nil)
+    // shows a view with an animation
+    private func showView(_ view: UIView) {
+        if view.isHidden {
+            UIView.transition(with: view, duration: 0.4, options: .transitionFlipFromLeft, animations: {
+                view.isHidden = false
+            }, completion: nil)
+        }
     }
     
+    // hides a view with an animation
+    private func hideView(_ view: UIView) {
+        if !view.isHidden {
+            UIView.transition(with: view, duration: 0.4, options: .transitionFlipFromLeft, animations: {
+                view.isHidden = true
+            }, completion: nil)
+        }
+    }
     
     // removes all images
-    func reset() {
-        for case let button as UIButton in self.getAllSubviews() {
-            button.setImage(UIImage(named: "Add image"), for: .normal)
-        }
-    }
-
-    // puts the view back to the center
-    func resetPosition(animate: Bool) {
-        if animate {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.transform = CGAffineTransform(translationX: 0, y: 0)
-            })
-        }
-        else {
-            self.transform = CGAffineTransform(translationX: 0, y: 0)
-        }
-    }
-}
-
-// gets all the subviews of a view and its subviews
-extension UIView {
-    class func getAllSubviews<T: UIView>(_ view: UIView) -> [T] {
-        return view.subviews.flatMap { subView -> [T] in
-            var result = getAllSubviews(subView) as [T]
-            if let view = subView as? T {
-                result.append(view)
-            }
-            return result
-        }
+    func resetImages() {
+        imageButton1.setImage(UIImage(named: "Add image"), for: .normal)
+        imageButton2.setImage(UIImage(named: "Add image"), for: .normal)
+        imageButton3.setImage(UIImage(named: "Add image"), for: .normal)
+        imageButton4.setImage(UIImage(named: "Add image"), for: .normal)
     }
     
-    func getAllSubviews<T: UIView>() -> [T] {
-        return UIView.getAllSubviews(self) as [T]
+    // Changes the margins thickness
+    func changeMarginThickness(size: CGFloat) {
+        layoutViewTopC.constant = size
+        layoutViewBottomC.constant = size
+        layoutViewLeftC.constant = size
+        layoutViewRightC.constant = size
+        layoutViewRow1.spacing = size
+        layoutViewRow2.spacing = size
+        layoutViewContent.spacing = size
     }
 }

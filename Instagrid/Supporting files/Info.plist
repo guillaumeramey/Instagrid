@@ -4,8 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>ThirstySoftRegular.otf</string>
-		<string>Delm-Medium.otf</string>
+		<string>Fonts/ThirstySoftRegular.otf</string>
+		<string>Fonts/Delm-Medium.otf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
