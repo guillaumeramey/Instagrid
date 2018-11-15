@@ -23,6 +23,11 @@ class LayoutView: UIView {
             setLayout(layout)
         }
     }
+    var marginsThickness: CGFloat = 15 {
+        didSet {
+            setMarginThickness(size: marginsThickness)
+        }
+    }
 
     // MARK: - Methods
     // sets the layout
@@ -69,7 +74,7 @@ class LayoutView: UIView {
     }
 
     // Changes the margins thickness
-    func changeMarginThickness(size: CGFloat) {
+    private func setMarginThickness(size: CGFloat) {
         layoutViewTopC.constant = size
         layoutViewBottomC.constant = size
         layoutViewLeftC.constant = size

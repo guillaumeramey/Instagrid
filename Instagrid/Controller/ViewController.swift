@@ -6,17 +6,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var layoutView: LayoutView!
     @IBOutlet weak var layoutButtons: UIStackView!
     @IBOutlet weak var colorButtons: UIStackView!
-    @IBOutlet weak var thicknessButtons: UIStackView!
 
     // MARK: - Properties
     // Lets the user pick an image
     var imagePicker = UIImagePickerController()
+
     // Permits multiple image pickers in a view
     var buttonSender: UIButton!
+
     // Original position of the layout
     var layoutOrigin = CGPoint(x: 0, y: 0)
-    // Margins thickness
-    var thicknessSize = CGFloat(15)
+
+    // Determines the device orientation
+    var orientationIsPortrait: Bool {
+        return UIApplication.shared.statusBarOrientation == .portrait
+    }
+    var orientationIsLandscape: Bool {
+        return UIApplication.shared.statusBarOrientation == .landscapeLeft
+            || UIApplication.shared.statusBarOrientation == .landscapeRight
+    }
 
     // MARK: - Actions
     // Layout selection
@@ -24,27 +32,54 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         layoutView.layout = sender.tag
         selectButtonLayout(sender.tag)
     }
+
     // Image selection
     @IBAction func changeImage(_ sender: UIButton) {
         buttonSender = sender
         self.present(imagePicker, animated: true)
     }
+
     // Background color selection
     @IBAction func changeBackgroundColor(_ sender: UIButton) {
         layoutView.backgroundColor = sender.backgroundColor
     }
-    // Margin thickness selection
-    @IBAction func changeThickness(_ sender: UIButton) {
-        if sender.tag == 0 {
-            if thicknessSize > 0 {
-                thicknessSize -= 3
-                layoutView.changeMarginThickness(size: thicknessSize)
+
+    // Margins thickness selection
+    @IBAction func decreaseMarginsThickness(_ sender: UIButton) {
+        if layoutView.marginsThickness > 0 {
+            layoutView.marginsThickness -= 3
+        }
+    }
+    @IBAction func increaseMarginsThickness(_ sender: UIButton) {
+        if layoutView.marginsThickness < 15 {
+            layoutView.marginsThickness += 3
+        }
+    }
+
+    // the user swipes
+    @IBAction func swiped(recognizer: UISwipeGestureRecognizer) {
+        var translationX: CGFloat = 0
+        var translationY: CGFloat = 0
+
+        switch recognizer.direction {
+        case .left:
+            if orientationIsLandscape {
+                translationX = -UIScreen.main.bounds.width
             }
-        } else {
-            if thicknessSize < 15 {
-                thicknessSize += 3
-                layoutView.changeMarginThickness(size: thicknessSize)
+        case .up:
+            if orientationIsPortrait {
+                translationY = -UIScreen.main.bounds.height
             }
+        default:
+            break
+        }
+
+        if translationX != 0 || translationY != 0 {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.layoutView.transform = CGAffineTransform(translationX: translationX, y: translationY)
+            }, completion: { _ in
+                self.shareImage(self.layoutView)
+            })
         }
     }
 
@@ -60,14 +95,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.modalPresentationStyle = .overCurrentContext // allows the landscape mode for the image picker
-
-        let swipeUpRec = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp))
-        swipeUpRec.direction = .up
-        layoutView.addGestureRecognizer(swipeUpRec)
-
-        let swipeLeftRec = UISwipeGestureRecognizer(target: self, action: #selector(swipedLeft))
-        swipeLeftRec.direction = .left
-        layoutView.addGestureRecognizer(swipeLeftRec)
     }
 
     // Makes the color buttons round
@@ -77,7 +104,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
 
-    // Selects the current layout button
+    // Marks the current layout button as selected
     func selectButtonLayout(_ selectedLayout: Int) {
         for case let button as UIButton in layoutButtons.subviews {
             if button.tag == selectedLayout {
@@ -86,36 +113,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 button.setImage(nil, for: .normal)
             }
         }
-    }
-
-    // the user swipes up
-    @objc func swipedUp() {
-        if UIApplication.shared.statusBarOrientation == .portrait {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.layoutView.transform = CGAffineTransform(translationX: 0, y: -UIScreen.main.bounds.height)
-            }, completion: { _ in
-                self.shareImage(self.layoutView)
-            })
-        }
-    }
-
-    // the user swipes left
-    @objc func swipedLeft() {
-        if UIApplication.shared.statusBarOrientation == .landscapeLeft
-            || UIApplication.shared.statusBarOrientation == .landscapeRight {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.layoutView.transform = CGAffineTransform(translationX: -UIScreen.main.bounds.width, y: 0)
-            }, completion: { _ in
-                self.shareImage(self.layoutView)
-            })
-        }
-    }
-
-    // Puts the view back to it's original position
-    func resetLayoutPosition() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.layoutView.transform = CGAffineTransform(translationX: self.layoutOrigin.x, y: self.layoutOrigin.y)
-        })
     }
 
     // Allows the user to select an image
@@ -144,5 +141,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.resetLayoutPosition()
         }
         present(activityVC, animated: true, completion: nil)
+    }
+
+    // Puts the layout view back to it's original position
+    func resetLayoutPosition() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.layoutView.transform = CGAffineTransform(translationX: self.layoutOrigin.x, y: self.layoutOrigin.y)
+        })
     }
 }

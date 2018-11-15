@@ -27,6 +27,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wn-eV-cpZ">
                                 <rect key="frame" x="147.66666666666666" y="30" width="118.66666666666666" height="39"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="sET-ez-dqW"/>
                                 </constraints>
@@ -68,7 +69,7 @@
                                                             <action selector="changeImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="weu-mW-2oR"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhh-0s-Yh1" userLabel="Button Image 2">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhh-0s-Yh1" userLabel="Button Image 2">
                                                         <rect key="frame" x="179.66666666666663" y="0.0" width="164.33333333333337" height="164.66666666666666"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Add image"/>
@@ -89,7 +90,7 @@
                                                             <action selector="changeImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wH2-ll-WvK"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHO-5e-5MJ" userLabel="Button Image 4">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHO-5e-5MJ" userLabel="Button Image 4">
                                                         <rect key="frame" x="179.66666666666663" y="0.0" width="164.33333333333337" height="164.33333333333334"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Add image"/>
@@ -104,6 +105,7 @@
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.062745098040000002" green="0.40000000000000002" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="pGl-kB-oLM" firstAttribute="top" secondItem="3g4-cp-Xcu" secondAttribute="top" constant="15" id="68A-bV-Xjz"/>
                                     <constraint firstAttribute="bottom" secondItem="pGl-kB-oLM" secondAttribute="bottom" constant="15" id="Hjb-Uq-FvI"/>
@@ -123,6 +125,8 @@
                                     <outlet property="layoutViewRow1" destination="EpA-Gf-B2O" id="2y3-Ak-a4z"/>
                                     <outlet property="layoutViewRow2" destination="UvV-Om-tNc" id="9s5-CX-naN"/>
                                     <outlet property="layoutViewTopC" destination="68A-bV-Xjz" id="CJw-pN-PwH"/>
+                                    <outletCollection property="gestureRecognizers" destination="0XP-b1-VmV" appends="YES" id="hPn-TO-cTG"/>
+                                    <outletCollection property="gestureRecognizers" destination="eS5-Uu-duy" appends="YES" id="Xmg-tv-blA"/>
                                 </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BpS-Ac-ekf" userLabel="Layout buttons">
@@ -247,10 +251,10 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="changeThickness:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gh8-RW-OIt"/>
+                                                    <action selector="decreaseMarginsThickness:" destination="BYZ-38-t0r" eventType="touchUpInside" id="msz-mJ-PHO"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdX-fu-vJU">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdX-fu-vJU">
                                                 <rect key="frame" x="41.333333333333314" y="0.0" width="36" height="36"/>
                                                 <color key="backgroundColor" red="0.062745098040000002" green="0.40000000000000002" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -261,7 +265,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="changeThickness:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v0j-Sf-PJd"/>
+                                                    <action selector="increaseMarginsThickness:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LnC-g7-IBu"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -328,12 +332,12 @@
                                 <exclude reference="A7j-KX-yfu"/>
                                 <exclude reference="OI2-NV-VV4"/>
                                 <exclude reference="iG7-b5-Dpx"/>
-                                <exclude reference="qWV-s8-uTw"/>
+                                <exclude reference="0Y9-zR-M1m"/>
+                                <exclude reference="Ayq-vz-2uC"/>
                                 <exclude reference="B19-qg-pYc"/>
                                 <exclude reference="i3j-g7-Ve0"/>
                                 <exclude reference="lDa-lq-WHw"/>
-                                <exclude reference="0Y9-zR-M1m"/>
-                                <exclude reference="Ayq-vz-2uC"/>
+                                <exclude reference="qWV-s8-uTw"/>
                                 <exclude reference="peP-x6-6eV"/>
                                 <exclude reference="4la-he-Das"/>
                                 <exclude reference="PBX-Xf-jXo"/>
@@ -347,7 +351,6 @@
                                 <include reference="lwZ-Vz-qGh"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Aqt-h1-MZD"/>
                                 <include reference="AzE-wg-bFS"/>
                                 <exclude reference="DxV-if-jAt"/>
                                 <exclude reference="eYc-a5-gcu"/>
@@ -362,14 +365,15 @@
                                 <exclude reference="bjj-Gg-PC3"/>
                                 <include reference="iG7-b5-Dpx"/>
                                 <exclude reference="icQ-PZ-2mv"/>
-                                <include reference="qWV-s8-uTw"/>
-                                <include reference="B19-qg-pYc"/>
-                                <include reference="i3j-g7-Ve0"/>
-                                <include reference="lDa-lq-WHw"/>
                                 <include reference="0Y9-zR-M1m"/>
                                 <include reference="Ayq-vz-2uC"/>
                                 <exclude reference="WaX-Ps-emX"/>
                                 <exclude reference="d6z-cM-pEf"/>
+                                <include reference="B19-qg-pYc"/>
+                                <include reference="i3j-g7-Ve0"/>
+                                <include reference="lDa-lq-WHw"/>
+                                <include reference="qWV-s8-uTw"/>
+                                <exclude reference="Aqt-h1-MZD"/>
                                 <include reference="peP-x6-6eV"/>
                                 <exclude reference="xhu-0T-A1n"/>
                                 <include reference="4la-he-Das"/>
@@ -386,10 +390,20 @@
                         <outlet property="colorButtons" destination="0PB-RG-rYy" id="W2n-H8-JSx"/>
                         <outlet property="layoutButtons" destination="BpS-Ac-ekf" id="VbQ-Ax-ifv"/>
                         <outlet property="layoutView" destination="3g4-cp-Xcu" id="GwI-fr-tNJ"/>
-                        <outlet property="thicknessButtons" destination="t9L-Z4-7aJ" id="VHp-i5-bAi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="up" id="0XP-b1-VmV" userLabel="Swipe Gesture Recognizer - up">
+                    <connections>
+                        <action selector="swipedWithRecognizer:" destination="BYZ-38-t0r" id="CLy-Tb-lkc"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="HOa-uT-axR"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="eS5-Uu-duy" userLabel="Swipe Gesture Recognizer - left">
+                    <connections>
+                        <action selector="swipedWithRecognizer:" destination="BYZ-38-t0r" id="aKQ-mk-kIZ"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="134.48275862068968" y="128.80000000000001"/>
         </scene>
