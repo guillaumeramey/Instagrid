@@ -1,13 +1,13 @@
 import UIKit
 
 class LayoutView: UIView {
-    
+    // MARK: - Outlets
     // buttons / images outlets
     @IBOutlet weak var imageButton1: UIButton!
     @IBOutlet weak var imageButton2: UIButton!
     @IBOutlet weak var imageButton3: UIButton!
     @IBOutlet weak var imageButton4: UIButton!
-    
+
     // Outlets used for thickness
     @IBOutlet weak var layoutViewTopC: NSLayoutConstraint!
     @IBOutlet weak var layoutViewBottomC: NSLayoutConstraint!
@@ -16,13 +16,15 @@ class LayoutView: UIView {
     @IBOutlet weak var layoutViewRow1: UIStackView!
     @IBOutlet weak var layoutViewRow2: UIStackView!
     @IBOutlet weak var layoutViewContent: UIStackView!
-    
+
+    // MARK: - Properties
     var layout: Int = 2 {
         didSet {
             setLayout(layout)
         }
     }
-    
+
+    // MARK: - Methods
     // sets the layout
     private func setLayout(_ layout: Int) {
         switch layout {
@@ -39,7 +41,7 @@ class LayoutView: UIView {
             break
         }
     }
-    
+
     // shows a view with an animation
     private func showView(_ view: UIView) {
         if view.isHidden {
@@ -48,7 +50,7 @@ class LayoutView: UIView {
             }, completion: nil)
         }
     }
-    
+
     // hides a view with an animation
     private func hideView(_ view: UIView) {
         if !view.isHidden {
@@ -57,7 +59,7 @@ class LayoutView: UIView {
             }, completion: nil)
         }
     }
-    
+
     // removes all images
     func resetImages() {
         imageButton1.setImage(UIImage(named: "Add image"), for: .normal)
@@ -65,7 +67,7 @@ class LayoutView: UIView {
         imageButton3.setImage(UIImage(named: "Add image"), for: .normal)
         imageButton4.setImage(UIImage(named: "Add image"), for: .normal)
     }
-    
+
     // Changes the margins thickness
     func changeMarginThickness(size: CGFloat) {
         layoutViewTopC.constant = size

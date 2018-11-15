@@ -1,7 +1,7 @@
 import UIKit
 
-class Image : UIImage {
-    
+class Image: UIImage {
+
     // converts a view into an image
     func convert(_ view: UIView) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
